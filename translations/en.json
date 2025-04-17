@@ -1,0 +1,15 @@
+{
+    "title": "EX‑CommandStation",
+    "config": {
+        "step": {
+            "user": {
+                "title": "Configure EX‑CommandStation",
+                "description": "Connect to your EX‑CommandStation",
+                "data": {
+                    "host": "Host",
+                    "port": "Port"
+                }
+            }
+        }
+    }
+}
