@@ -110,14 +110,10 @@ class DccExTrackPowerSwitch(SwitchEntity):
     async def async_turn_on(self, **kwargs):
         """Turn the switch on."""
         await self._send(COMMAND_TRACKS_ON)
-        self._attr_is_on = True
-        self.async_write_ha_state()
 
     async def async_turn_off(self, **kwargs):
         """Turn the switch off."""
         await self._send(COMMAND_TRACKS_OFF)
-        self._attr_is_on = False
-        self.async_write_ha_state()
 
     async def _send(self, command: str):
         try:
