@@ -5,6 +5,7 @@ import logging
 
 from homeassistant.components.switch import SwitchEntity
 from homeassistant.core import HomeAssistant, callback
+from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.dispatcher import (
     async_dispatcher_connect,
     async_dispatcher_send,
@@ -32,11 +33,21 @@ class DccExTrackPowerSwitch(SwitchEntity):
         """Initialize the switch."""
         super().__init__()
         self._host = host
-        self._hass = hass
         self._port = port
+        self._hass = hass
         self._attr_name = "Track Power"
         self._attr_is_on = False
         self._reader_task = None
+
+        # Add a unique ID
+        self._attr_unique_id = f"dcc_ex_track_power_{host}_{port}"
+        # Add device info
+        self._attr_device_info = DeviceInfo(
+            identifiers={(DOMAIN, f"{host}:{port}")},
+            name="EX‑CommandStation",
+            manufacturer="DCC-EX",
+            model="EX-CommandStation",
+        )
 
     async def async_added_to_hass(self):
         """Register callbacks."""
