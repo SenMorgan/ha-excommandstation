@@ -1,4 +1,6 @@
 """Constants for the EX‑CommandStation integration."""
 
-DOMAIN = "excommandstation"
-DEFAULT_PORT = 2560
+from typing import Final
+
+DOMAIN: Final = "excommandstation"
+DEFAULT_PORT: Final = 2560
